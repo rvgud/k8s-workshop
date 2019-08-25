@@ -155,7 +155,7 @@ $ docker network create mynet
 Stop both the containers.
 
 ```
-$ docker stop $(docker ps -q)
+$ docker container prune
 ```
 
 To remove all stopped containers run the following command.

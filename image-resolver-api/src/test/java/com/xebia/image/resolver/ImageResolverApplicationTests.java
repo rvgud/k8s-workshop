@@ -1,4 +1,4 @@
-package com.shekhargulati.image.resolver;
+package com.xebia.image.resolver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

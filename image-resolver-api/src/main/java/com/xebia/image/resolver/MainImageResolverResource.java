@@ -1,4 +1,4 @@
-package com.shekhargulati.image.resolver;
+package com.xebia.image.resolver;
 
 import imageresolver.MainImageResolver;
 import org.slf4j.Logger;
