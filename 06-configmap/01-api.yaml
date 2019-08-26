@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-resolver-api-svc
+spec:
+  selector:
+    app: api
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 31001
+    targetPort: 8080
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-resolver-api-depl
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: image-resolver-api
+        image: shekhargulati/image-resolver-api
+        envFrom:
+        - configMapRef:
+            name: api-config
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 8080
