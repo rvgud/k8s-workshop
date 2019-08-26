@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-resolver-api-svc
+spec:
+  selector:
+    app: api
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 31001
+    targetPort: 8080
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-resolver-api-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: image-resolver-api
+        image: shekhargulati/image-resolver-api
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: api/v1/images?url=https://medium.com/@angelquicksey/service-design-for-policy-b0a9408dced1
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
