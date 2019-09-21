@@ -1,6 +1,5 @@
 # Docker Demo
 
-There are Three Docker demos. 
 
 ## Demo 1: Basics
 
@@ -190,3 +189,10 @@ c.s.i.r.MainImageResolverResource        : Serving from cache...
 $ docker run -it --network mynet --rm redis redis-cli -h redis
 ```
 
+## Demo 3: Volumes
+
+Bind Mount
+```
+Bind a volume
+docker run -d  -it -p 80:80 --name devtest  --mount type=bind,source="$(pwd)"/ravindra,target=/usr/share/nginx/html nginx:latest
+```
