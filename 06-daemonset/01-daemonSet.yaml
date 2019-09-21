@@ -24,7 +24,7 @@ spec:
             limits:
               memory: 20Mi
             requests:
-              cpu: 10m
+              cpu: 100m
               memory: 20Mi
           volumeMounts:
             - name: varlog

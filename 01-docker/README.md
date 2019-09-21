@@ -1,6 +1,6 @@
 # Docker Demo
 
-There are two Docker demos. 
+There are Three Docker demos. 
 
 ## Demo 1: Basics
 
