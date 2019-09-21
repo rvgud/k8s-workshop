@@ -1,9 +1,16 @@
+buildscript {
+	dependencies {
+		classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+	}
+}
 plugins {
 	id 'java'
 	id "com.palantir.docker" version "0.22.1"
 	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
+apply plugin: 'com.palantir.docker'
 
 group = 'com.xebia'
 sourceCompatibility = '1.8'
