@@ -14,7 +14,7 @@ $ docker pull nginx
 To run ngnix
 
 ```
-$ docker run ngnix
+$ docker run nginx
 ```
 
 To access on local machine, we will have to expose port
