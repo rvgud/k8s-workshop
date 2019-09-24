@@ -190,9 +190,24 @@ $ docker run -it --network mynet --rm redis redis-cli -h redis
 ```
 
 ## Demo 3: Volumes
+# Using --mount option
 
 Bind Mount
 ```
 Bind a volume
 docker run -d  -it -p 80:80 --name devtest  --mount type=bind,source="$(pwd)"/ravindra,target=/usr/share/nginx/html nginx:latest
 ```
+
+
+Volume
+```
+Bind a volume
+docker run -d  -it -p 80:80 --name devtest  --mount type=volume,source="$(pwd)"/ravindra,target=/usr/share/nginx/html nginx:latest
+```
+
+# Using --volume option
+
+docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html nginx:latest
+
+Multiple Volumes:-
+docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log  nginx:latest
