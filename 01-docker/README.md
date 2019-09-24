@@ -202,7 +202,14 @@ docker run -d  -it -p 80:80 --name devtest  --mount type=bind,source="$(pwd)"/ra
 Volume
 ```
 Bind a volume
-docker run -d  -it -p 80:80 --name devtest  --mount type=volume,source="$(pwd)"/ravindra,target=/usr/share/nginx/html nginx:latest
+docker volume create hello
+docker volume inspect hello
+cd /var/lib/docker/volumes/hello
+cp /home/ravindrashekhawat5876/demo/k8s-workshop/01-docker/ravindra/* . -r
+docker run -d  -it -p 80:80 --name devtest  --mount type=volume,source=hello,target=/usr/share/nginx/html nginx:latest
+docker stop devtest
+docker container prune
+docker volume rm  hello
 ```
 
 # Using --volume option
@@ -210,4 +217,5 @@ docker run -d  -it -p 80:80 --name devtest  --mount type=volume,source="$(pwd)"/
 docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html nginx:latest
 
 Multiple Volumes:-
-docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log  nginx:latest
+docker run -d  -it -p 80:80 --name devte
+st  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log/nginx  nginx:latest
