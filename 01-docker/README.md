@@ -189,8 +189,9 @@ c.s.i.r.MainImageResolverResource        : Serving from cache...
 $ docker run -it --network mynet --rm redis redis-cli -h redis
 ```
 
-## Demo 3: Volumes
-# Using --mount option
+### Demo 3: Volumes
+
+## Using --mount option
 
 Bind Mount
 ```
@@ -212,9 +213,23 @@ docker container prune
 docker volume rm  hello
 ```
 
-# Using --volume option
-
+## Using --volume option
+Bind Mount
+```
 docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html nginx:latest
 
 Multiple Volumes:-
 docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log/nginx  nginx:latest
+ ```
+Volume
+```
+docker volume create hello
+docker run -d  -it -p 80:80 --name devtest  -v hello:/usr/share/nginx/html nginx:latest
+
+```
+
+Volume in Dockerfile :-
+
+Volume in dockerfile will create a random Docker Area Volume. It will mount this volume in the container. 
+Note:- Any changes in the mounted volume in Dockerfile will be discarded.
+
