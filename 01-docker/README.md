@@ -217,5 +217,4 @@ docker volume rm  hello
 docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html nginx:latest
 
 Multiple Volumes:-
-docker run -d  -it -p 80:80 --name devte
-st  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log/nginx  nginx:latest
+docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html  -v "$(pwd)"/logs:/var/log/nginx  nginx:latest
