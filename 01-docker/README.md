@@ -191,7 +191,7 @@ $ docker run -it --network mynet --rm redis redis-cli -h redis
 
 ### Demo 3: Volumes
 
-## Using --mount option
+#### Using --mount option
 
 Bind Mount
 ```
@@ -213,7 +213,7 @@ docker container prune
 docker volume rm  hello
 ```
 
-## Using --volume option
+#### Using --volume option
 Bind Mount
 ```
 docker run -d  -it -p 80:80 --name devtest  -v "$(pwd)"/ravindra:/usr/share/nginx/html nginx:latest
