@@ -1,27 +1,29 @@
-# Deployment Demo
+# RBAC Demo
 
-You usually don't create pods directly you let higher level construct like `Deployment` take care of this.
-
-The main reason for this is that Deployment controller ensures pods can self heal i.e if pod will go down then deployment controller will restart it.
-
-To create a deployment run the following command.
+Create a Service account ,Role and Role Binding
 
 ```
-$ kubectl create -f 01-deployment.yaml
-```
-
-This will create a deployment object and start three pods with each pod having one container. 
-
-You can view the pods by running following command
+kubectl create -f 01-service-account.yaml
+kubectl create -f 02-role.yaml
+kubectl create -f 03-role-binding.yaml
 
 ```
-$ kubectl get pod
+
+Check permissons of created servce account:-
+```
+kubectl auth can-i get pod --as=system:serviceaccount:default:ravindra
+yes
+kubectl auth can-i delete  pod --as=system:serviceaccount:default:ravindra
+no
 ```
 
-```
-NAME                                       READY   STATUS    RESTARTS   AGE
-image-resolver-api-depl-795778f9bf-55knq   1/1     Running   0          23m
-```
-kubectl run -i --tty load-generator --image=busybox /bin/sh
-while true; do wget -q -O- http://image-resolver-api-svc.default.svc.cluster.local/api/v1/images/?url=https://medium.com/@angelquicksey/service-design-for-policy-
-b0a9408dced1; done
+Create a ClusterRole and Cluster Role Binding
+kubectl apply -f ./
+
+
+Check permissons of created servce account:-
+
+kubectl auth can-i get  secret  --as=system:serviceaccount:default:ravindra
+yes
+kubectl auth can-i delete  secret  --as=system:serviceaccount:default:ravindra
+no
