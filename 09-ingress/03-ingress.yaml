@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: image-resolver-api
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /api
 spec:
   rules:
   - http:
