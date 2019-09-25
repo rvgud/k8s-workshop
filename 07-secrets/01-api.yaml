@@ -32,10 +32,7 @@ spec:
         image: shekhargulati/image-resolver-api
         env:
           - name: SECRET_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: api-secret
-                key: username
+            value: ravindra
           - name: SECRET_PASSWORD
             valueFrom:
               secretKeyRef:
