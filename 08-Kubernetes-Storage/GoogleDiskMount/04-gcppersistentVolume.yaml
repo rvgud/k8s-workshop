@@ -22,5 +22,5 @@ spec:
   - "ReadWriteOnce"
   resources:
     requests:
-      storage: "10Gi"
+      storage: "10Mi"
   volumeName: "test-volume"
