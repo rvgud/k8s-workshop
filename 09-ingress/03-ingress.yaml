@@ -8,7 +8,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /api/*
+      - path: /api
         backend:
           serviceName: image-resolver-api-svc
           servicePort: 8080
