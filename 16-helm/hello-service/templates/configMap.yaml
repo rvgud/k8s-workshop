@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.configMap.name }}
+data:
+  message: {{ .Values.configMap.data.message }}
+  world_service_address: {{ .Values.configMap.data.world_service_address }}
