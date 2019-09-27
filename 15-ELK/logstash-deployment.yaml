@@ -47,7 +47,7 @@ spec:
     metadata:
       labels:
         k8s-app: logstash
-    replica: 1
+  replica: 1
   spec:
     containers:
     - name: logstash
