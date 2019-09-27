@@ -38,6 +38,10 @@ metadata:
   name: logstash-deployment
   namespace: kube-system
 spec:
+  selector:
+    matchLabels:
+      labels:
+        app: logstash
   replicas: 1
   template:
     metadata:
