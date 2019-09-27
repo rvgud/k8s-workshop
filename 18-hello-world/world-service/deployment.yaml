@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: world-service-world-service
+  namespace: default
+  labels:
+    release: stable
+    app.kubernetes.io/name: world-service
+    app.kubernetes.io/instance: world-service
+spec:
+  selector:
+    matchLabels:
+      release: stable
+      app.kubernetes.io/name: world-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        release: stable
+        app.kubernetes.io/name: world-service
+        service: world
+    spec:
+      containers:
+      - name: world-service
+        image: singhravindra/world-service:latest
+        env:
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: world-service-world-service
+              key: message
+        ports:
+        - containerPort: 8080

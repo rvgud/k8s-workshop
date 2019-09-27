@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-service-hello-service
+  namespace: default
+  labels:
+    release: stable
+    instance: hello-service
+    service: hello
+spec:
+  selector:
+    release: stable
+    app.kubernetes.io/name: hello-service
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    name: http
+  type: NodePort

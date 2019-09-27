@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-service-hello-service
+  namespace: default
+  labels:
+    release: stable
+    app.kubernetes.io/name: hello-service
+    app.kubernetes.io/instance: hello-service
+    service: hello
+spec:
+  selector:
+    matchLabels:
+      release: stable
+      app.kubernetes.io/name: hello-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        release: stable
+        app.kubernetes.io/name: hello-service
+        service: hello
+    spec:
+      containers:
+      - name: hello-service
+        image: singhravindra/hello-service:latest
+        env:
+        - name: WORLD_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: hello-service-hello-service
+              key: world_service_address
+        - name: MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: hello-service-hello-service
+              key: message
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: world-service-world-service
+  namespace: demo
+  labels:
+    release: stable
+    app.kubernetes.io/name: world-service
+spec:
+  selector:
+    release: stable
+    app.kubernetes.io/name: world-service
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    name: http
+  type: NodePort
