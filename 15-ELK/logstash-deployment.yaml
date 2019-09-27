@@ -37,16 +37,17 @@ kind: Deployment
 metadata:
   name: logstash-deployment
   namespace: kube-system
+  labels:
+    k8s-app: logstash
 spec:
   selector:
     matchLabels:
-      labels:
-        app: "logstash"
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: "logstash"
+      k8s-app: logstash
+    template:
+      metadata:
+        labels:
+          k8s-app: logstash
+    replica: 1
     spec:
       containers:
       - name: logstash
