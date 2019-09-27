@@ -18,12 +18,17 @@ no
 ```
 
 Create a ClusterRole and Cluster Role Binding
+```
 kubectl apply -f ./
+```
 
 
 Check permissons of created servce account:-
-
+```
 kubectl auth can-i get  secret  --as=system:serviceaccount:default:ravindra
+```
 yes
+```
 kubectl auth can-i delete  secret  --as=system:serviceaccount:default:ravindra
+```
 no
