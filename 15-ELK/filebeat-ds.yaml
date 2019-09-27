@@ -53,6 +53,10 @@ metadata:
     k8s-app: filebeat
     kubernetes.io/cluster-service: "true"
 spec:
+  selector:
+    matchLabels:
+      k8s-app: filebeat
+      kubernetes.io/cluster-service: "true"
   template:
     metadata:
       labels:
