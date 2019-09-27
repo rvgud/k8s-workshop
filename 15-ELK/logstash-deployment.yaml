@@ -41,12 +41,12 @@ spec:
   selector:
     matchLabels:
       labels:
-        app: logstash
+        app: "logstash"
   replicas: 1
   template:
     metadata:
       labels:
-        app: logstash
+        app: "logstash"
     spec:
       containers:
       - name: logstash
@@ -79,7 +79,7 @@ metadata:
   namespace: kube-system
 spec:
   selector:
-    app: logstash
+    app: "logstash"
   ports:
   - protocol: TCP
     port: 5044
