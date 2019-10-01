@@ -1,2 +1,2 @@
-# xebia-k8s-workshop
-Xebia Kubernetes Workshop
+# k8s-workshop
+Kubernetes Workshop
